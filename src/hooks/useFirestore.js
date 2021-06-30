@@ -23,4 +23,12 @@ const useFirestore = (collection) => {
     return { docs };
 }
 
-export default useFirestore;
+const deleteFile = (id) => {
+    const collectionRef = projectFirestore.collection('images');
+
+    collectionRef.doc(id).delete()
+        .then(() => { console.log(`'${id}' deleted`) })
+        .catch((err) => { console.log('Error: ', err) })
+}
+
+export { useFirestore, deleteFile };
